@@ -1,0 +1,26 @@
+{
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "project": "./tsconfig.json",
+        "include": ["./node_modules/@types/**/*", "./node_modules/typescript/**/*"],
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "ignorePatterns": ["rollup.config.js", "*.js"],
+    "extends": [
+        "airbnb-typescript/base",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/recommended"
+    ],
+    "rules": {
+        "max-len": ["warn", { "code": 200, "tabWidth": 4 }],
+        "@typescript-eslint/indent": ["warn", "tab", {"SwitchCase": 1}],
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/lines-between-class-members": "off",
+        "semi": [2, "always"],
+        "@typescript-eslint/no-implied-eval": "off",
+        "@typescript-eslint/comma-dangle": "off",
+        "@typescript-eslint/dot-notation": "off"
+    }
+}
