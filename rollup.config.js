@@ -1,6 +1,13 @@
 import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
+import fs from 'fs';
 import path from 'path';
+
+const envPath = path.resolve(__dirname, './.env');
+if(!fs.existsSync(envPath)) {
+    fs.copyFileSync(path.resolve(__dirname, './env'), envPath);
+}
+
 require('dotenv').config({ path: './.env' });
 
 const outputPath = path.resolve(__dirname, process.env.OUTPUT_PATH);

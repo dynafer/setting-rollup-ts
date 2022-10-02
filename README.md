@@ -8,7 +8,7 @@ $ npm run preinstall
 ```
 
 # Configuration
-1. Copy `/env` to `/.env`
+1. Copy `/env` to `/.env` (Optional)
 2. OUTPUT_PATH is the location where to save a bundle of merged Typescript files is converted to a Javascript file.
 3. OUTPUT_FILE_NAME is the bundle file name.
 4. MAIN_FILE is a main file for typescript project.
