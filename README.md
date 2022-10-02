@@ -1,5 +1,11 @@
 # Requirements
 node.js
+'sh' command
+
+# Pre-installation
+```bash
+$ npm run preinstall
+```
 
 # Configuration
 1. Copy `/env` to `/.env`
@@ -23,10 +29,6 @@ Default Location: `/src`
 If you want to change default location, change `rollup.config.js` and `tsconfig.json`
 
 # NPM Package auto update
-## Requirements
-'sh' command
-
-## Usage
 ```bash
 $ npm run update
 ```
