@@ -8,7 +8,7 @@ if(!fs.existsSync(envPath)) {
     fs.copyFileSync(path.resolve(__dirname, './env'), envPath);
 }
 
-require('dotenv').config({ path: './.env' });
+require('dotenv').config({ path: envPath });
 
 const outputPath = path.resolve(__dirname, process.env.OUTPUT_PATH);
 const isDevelopment = process.env.MODE === 'development';
