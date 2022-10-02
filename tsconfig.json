@@ -9,7 +9,6 @@
 	"removeComments": true,
     "compilerOptions": {
         "suppressImplicitAnyIndexErrors": true,
-        "sourceMap": true,
         "noImplicitAny": true,
         "module": "es6",
         "target": "es6",

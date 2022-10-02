@@ -9,7 +9,10 @@ const isDevelopment = process.env.MODE === 'development';
 export default {
     plugins: [
         typescript({
-            tsconfig: './tsconfig.json'
+            tsconfig: path.resolve(__dirname, './tsconfig.json'),
+            compilerOptions: {
+                sourceMap: isDevelopment
+            }
         })
     ],
     input: `./src/${process.env.MAIN_FILE}`,
