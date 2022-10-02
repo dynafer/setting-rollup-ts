@@ -4,7 +4,7 @@ import path from 'path';
 require('dotenv').config({ path: './.env' });
 
 const outputPath = path.resolve(__dirname, process.env.OUTPUT_PATH);
-const isDevelopment = process.env.ENVIRONMENT === 'development';
+const isDevelopment = process.env.MODE === 'development';
 
 export default {
     plugins: [

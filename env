@@ -1,4 +1,4 @@
-ENVIRONMENT = development
+MODE = development
 OUTPUT_PATH = ./js
 OUTPUT_FILE_NAME = bundle
 MAIN_FILE = temp.ts

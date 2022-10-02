@@ -12,7 +12,7 @@ $ npm run preinstall
 2. OUTPUT_PATH is the location where to save a bundle of merged Typescript files is converted to a Javascript file.
 3. OUTPUT_FILE_NAME is the bundle file name.
 4. MAIN_FILE is a main file for typescript project.
-5. If you change ENVIRONMENT variable to development, source map will be created when you build up.
+5. If you change MODE variable to development, source map will be created when you build up.
 
 # Usage
 ```bash
