@@ -1,28 +1,37 @@
 import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
+import scss from 'rollup-plugin-scss';
 import fs from 'fs';
 import path from 'path';
 
-const envPath = path.resolve(__dirname, './.env');
-if(!fs.existsSync(envPath)) {
-    fs.copyFileSync(path.resolve(__dirname, './env'), envPath);
-}
-
-require('dotenv').config({ path: envPath });
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 
 const outputPath = path.resolve(__dirname, process.env.OUTPUT_PATH);
 const isDevelopment = process.env.MODE === 'development';
+const useScss = process.env.USE_SCSS === 'true';
+const srcPath = path.resolve(__dirname, './src');
+const scssPlugin = [];
+if (useScss) {
+    scssPlugin.push(
+        scss({
+            output: path.resolve(outputPath, `./${process.env.OUTPUT_FILE_NAME}.min.css`),
+            sourceMap: isDevelopment,
+            outputStyle: 'compressed',
+            failOnError: true,
+            watch: srcPath
+        })
+    );
+}
+
+if(!isDevelopment) {
+    const mapFile = type => path.resolve(outputPath, `./${process.env.OUTPUT_FILE_NAME}.${type}.map`);
+    if(fs.existsSync(mapFile('js'))) fs.unlinkSync(mapFile('js'));
+    if(fs.existsSync(mapFile('min.js'))) fs.unlinkSync(mapFile('min.js'));
+    if(fs.existsSync(mapFile('min.css'))) fs.unlinkSync(mapFile('min.css'));
+}
 
 export default {
-    plugins: [
-        typescript({
-            tsconfig: path.resolve(__dirname, './tsconfig.json'),
-            compilerOptions: {
-                sourceMap: isDevelopment
-            }
-        })
-    ],
-    input: `./src/${process.env.MAIN_FILE}`,
+    input: path.resolve(srcPath, `./${useScss ? 'ts/' : ''}${process.env.MAIN_FILE}.ts`),
     output: [
         {
             file: path.resolve(outputPath, `./${process.env.OUTPUT_FILE_NAME}.js`),
@@ -36,5 +45,14 @@ export default {
             plugins: [terser()],
             sourcemap: isDevelopment
         },
+    ],
+    plugins: [
+        typescript({
+            tsconfig: path.resolve(__dirname, './tsconfig.json'),
+            compilerOptions: {
+                sourceMap: isDevelopment
+            }
+        }),
+        ...scssPlugin
     ],
 }
