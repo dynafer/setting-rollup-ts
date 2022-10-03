@@ -1,6 +1,7 @@
 import typescript from '@rollup/plugin-typescript';
 import { terser } from 'rollup-plugin-terser';
 import scss from 'rollup-plugin-scss';
+import { run } from './rollup.hook';
 import fs from 'fs';
 import path from 'path';
 
@@ -47,6 +48,7 @@ export default {
         },
     ],
     plugins: [
+        run('npm run lint'),
         typescript({
             tsconfig: path.resolve(__dirname, './tsconfig.json'),
             compilerOptions: {

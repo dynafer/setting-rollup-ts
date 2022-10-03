@@ -6,5 +6,5 @@ if [ ! -f ./.env ]; then
     exit 0
 fi
 
-npm run lint && rollup -c rollup.config.js
+rollup -c rollup.config.js
 exit 0

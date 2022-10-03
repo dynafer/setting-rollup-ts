@@ -5,5 +5,5 @@ if [ ! -f ./.env ]; then
     sh ./scripts/preinstall.sh
 fi
 
-npm run lint && rollup -c rollup.config.js -w --environment MODE:development
+rollup -c rollup.config.js -w --environment MODE:development
 exit 0
