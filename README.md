@@ -1,5 +1,5 @@
 # Requirements
-node.js
+node.js\
 'sh' command
 
 # Pre-installation
@@ -12,12 +12,12 @@ $ npm run preinstall
 ```bash
 $ npm run watch
 ```
-This command saves continuously as a bundle file until the terminal stops in **development** environment.
+This command saves continuously as a bundle file until the terminal stops in "**development**" environment.
 
 ```bash
 $ npm run build
 ```
-This command saves as a bundle file once in **production** environment.
+This command saves as a bundle file once in "**production**" environment.
 
 ```bash
 $ npm run lint
