@@ -1,6 +1,6 @@
 # Requirements
 node.js\
-'sh' command
+shell
 
 # Pre-installation
 This is a mandatory stage!
