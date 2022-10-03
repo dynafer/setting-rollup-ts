@@ -13,22 +13,20 @@ const useScss = process.env.USE_SCSS === 'true';
 const srcPath = path.resolve(__dirname, './src');
 const scssPlugin = [];
 if (useScss) {
-    scssPlugin.push(
-        scss({
-            output: path.resolve(outputPath, `./${process.env.OUTPUT_FILE_NAME}.min.css`),
-            sourceMap: isDevelopment,
-            outputStyle: 'compressed',
-            failOnError: true,
-            watch: srcPath
-        })
-    );
+    scssPlugin.push( scss({
+        output: path.resolve(outputPath, `./${process.env.OUTPUT_FILE_NAME}.min.css`),
+        sourceMap: isDevelopment,
+        outputStyle: 'compressed',
+        failOnError: true,
+        watch: srcPath
+    }) );
 }
 
-if(!isDevelopment) {
+if (!isDevelopment) {
     const mapFile = type => path.resolve(outputPath, `./${process.env.OUTPUT_FILE_NAME}.${type}.map`);
-    if(fs.existsSync(mapFile('js'))) fs.unlinkSync(mapFile('js'));
-    if(fs.existsSync(mapFile('min.js'))) fs.unlinkSync(mapFile('min.js'));
-    if(fs.existsSync(mapFile('min.css'))) fs.unlinkSync(mapFile('min.css'));
+    if (fs.existsSync(mapFile('js'))) fs.unlinkSync(mapFile('js'));
+    if (fs.existsSync(mapFile('min.js'))) fs.unlinkSync(mapFile('min.js'));
+    if (fs.existsSync(mapFile('min.css'))) fs.unlinkSync(mapFile('min.css'));
 }
 
 export default {

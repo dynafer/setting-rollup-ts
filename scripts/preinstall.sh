@@ -38,7 +38,9 @@ if [ ${useScss} == true ]
 then
     mkdir -p ./src/ts && chmod 777 ./src/ts
     mkdir -p ./src/scss && chmod 777 ./src/scss
-    touch ./src/ts/${mainFile}.ts && chmod 777 ./src/ts/${mainFile}.ts
+cat<<EOF >./src/ts/${mainFile}.ts
+import '../scss/${mainFile}.scss';
+EOF
     touch ./src/scss/${mainFile}.scss && chmod 777 ./src/scss/${mainFile}.scss
 else
     touch ./src/${mainFile}.ts && chmod 777 ./src/${mainFile}.ts
